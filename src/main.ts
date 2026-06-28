@@ -1,3 +1,4 @@
+import './assets/main.css' // <-- AJOUTEZ CETTE LIGNE ICI
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
