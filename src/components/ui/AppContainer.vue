@@ -1,9 +1,6 @@
-<script setup lang="ts">
-// Pas de props nécessaires pour un conteneur de base
-</script>
-
+<script setup lang="ts"></script>
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+  <div class="max-w-6xl mx-auto px-6 w-full">
     <slot />
   </div>
 </template>

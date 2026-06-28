@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+/* Importation des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap');
+
+/* Configuration du Design System Tailwind v4 */
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+
+  --color-bg-main: #0B0B0F;
+  --color-surface: #14141A;
+  --color-border-custom: #2A2A34;
+  --color-text-main: #F5F5F5;
+  --color-text-muted: #A0A0A8;
+  --color-accent: #D4AF37;
+}
+
+/* Petit correctif global pour appliquer le fond par défaut */
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+}
