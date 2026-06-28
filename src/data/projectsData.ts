@@ -82,10 +82,67 @@ export const dataProjects: ProjectData[] = [
       "Dashboard UX Design & Cross-Filtering Architecture",
       "Translating Technical Evidence into Business Actions"
     ],
-    links: {
-      github: '#',
-      dashboard: '#',
-      report: '#'
-    }
+    links: { github: '#', dashboard: '#', report: '#' }
+  },
+  {
+    id: 'nlp-book-recommendation',
+    title: 'Intelligent Book Recommendation System using NLP',
+    subtitle: 'Text Analytics, Topic Modeling & Recommendation Engine',
+    tags: ['Python', 'NLTK', 'Pandas', 'Scikit-Learn', 'TF-IDF', 'LSA', 'Cosine Similarity'],
+    year: '2026',
+    overview: {
+      description: "Books contain thousands of words, making it difficult to compare them manually based on their actual content. This project demonstrates how Natural Language Processing (NLP) can transform raw literary text into structured information capable of identifying themes and recommending similar books automatically. Using a collection of 52 English literature books from Project Gutenberg, I built an end-to-end text analytics pipeline that preprocesses raw text, extracts semantic information, identifies hidden topics, and recommends the most similar books based on their textual content.",
+      summary: {
+        source: 'Project Gutenberg',
+        records: '52 English Books',
+        features: 'Vast Text Corpora',
+        domain: 'Natural Language Processing'
+      }
+    },
+    businessContext: "Recommendation systems are widely used across digital platforms such as online bookstores, streaming services, and e-commerce websites. Rather than relying on user ratings or purchase history, this project focuses on content-based recommendation, where books are recommended according to the similarity of their textual content. The objective was to build an automated recommendation engine capable of suggesting the five most similar books from a selected title without any manual labeling.",
+    datasetCaption: "Raw unstructured text (.txt) showing original literary excerpts from Project Gutenberg.",
+    preparation: {
+      steps: [
+        "Stripped punctuation, special characters, and formatting anomalies.",
+        "Removed standard English stop words using the NLTK library.",
+        "Normalized grammatical variations via Lemmatization/Stemming techniques.",
+        "Cleaned structural textual noise and isolated core meaningful tokens.",
+        "Compiled a optimized and tokenized text corpus for matrix conversion."
+      ]
+    },
+    methodology: [
+      { step: 'Import', desc: 'Ingestion of 52 raw literature texts from Gutenberg.' },
+      { step: 'Cleaning', desc: 'Tokenization, filtering noise, and stop words isolation via NLTK.' },
+      { step: 'EDA', desc: 'Word frequency checking, dictionary generation, and distribution analysis.' },
+      { step: 'Feature Eng.', desc: 'Constructing Bag of Words and high-dimensional TF-IDF matrices.' },
+      { step: 'Machine Learning', desc: 'Topic Modeling via LSA (TruncatedSVD) and Cosine Similarity mapping.' }
+    ],
+    eda: [
+      { title: 'Word Frequency Distributions', desc: 'Tracking vocabulary densities across the corpus to highlight major keywords before term weighting.', type: 'left' },
+      { title: 'Thematic Document Distributions', desc: 'Evaluating document weights across latent axes to check thematic coherence.', type: 'right' },
+      { title: 'TF-IDF Matrix Sparsity', desc: 'Analyzing the spatial distribution of unique tokens across the 52 distinct vectors.', type: 'left' },
+      { title: 'Cosine Similarity Thresholds', desc: 'Profiling the statistical distribution of proximity scores across different literary genres.', type: 'right' }
+    ],
+    insights: [
+      { title: 'Hidden themes discovered automatically', desc: 'Without manual labeling, the unsupervised LSA pipeline successfully mapped three major literary themes.' },
+      { title: 'Unstructured text becomes tabular data', desc: 'Thousands of words were successfully mapped into numerical vectors, unlocking traditional machine learning workflows.' },
+      { title: 'Semantic structures reveal proximity', desc: 'Books sharing consistent vocabulary architectures clustered naturally, producing high-fidelity recommendations.' },
+      { title: 'NLP expands traditional BI limits', desc: 'This case study establishes the exact operational framework required to extract insights from text fields.' }
+    ],
+    kpis: [
+      { label: 'Analyzed Books', value: '52 Titles' },
+      { label: 'Vocabulary Size', value: 'Extensive' },
+      { label: 'Extracted Topics', value: '03 Clusters' },
+      { label: 'Recommendations', value: 'Top 5 Match' }
+    ],
+    challenges: "Working with unstructured textual data introduced intense dimensional scaling. Handling a massive document-term matrix containing thousands of unique words required advanced matrix operations. Applying dimensionality reduction through Latent Semantic Analysis (LSA) allowed the extraction of meaningful latent topics while ensuring computational efficiency and avoiding over-fitting.",
+    learned: [
+      "Unstructured Text Preprocessing, Filtering & Pipeline Tokenization",
+      "Feature Extraction utilizing Bag of Words and TF-IDF Models",
+      "Dimensionality Reduction & Unsupervised Learning via TruncatedSVD (LSA)",
+      "Mathematical Vector Space Comparison using Cosine Similarity",
+      "Designing Automated Decision-Support Content Engines"
+    ],
+    links: { github: '#', dashboard: '#', report: '#' }
   }
 ]
