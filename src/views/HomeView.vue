@@ -67,14 +67,14 @@ onMounted(() => {
                 <Database class="w-6 h-6" />
               </div>
               <AppHeading level="2" class="mb-3 group-hover:text-accent transition-colors">
-                Data & IA
+                Data Analytics
               </AppHeading>
               <AppText variant="muted">
-                Analyses exploratoires complexes, traitement de données massives et entraînement de modèles intelligents (Computer Vision, YOLO).
+                 Machine Learning │ Data Analytics │ Dashboards │ NLP Projects  
               </AppText>
             </div>
             <div class="mt-8 flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accent/80 group-hover:text-accent">
-              <span>Execute Workspace</span>
+              <span>Explore </span>
               <ArrowRight class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
             </div>
           </AppCard>
@@ -90,11 +90,11 @@ onMounted(() => {
                 Développement
               </AppHeading>
               <AppText variant="muted">
-                Conception d'applications robustes, intégration d'e-services et développement de solutions web modernes avec une architecture propre.
+                Web Applications │ Front-end │ Back-end │ UI Engineering  
               </AppText>
             </div>
             <div class="mt-8 flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accent/80 group-hover:text-accent">
-              <span>Execute Workspace</span>
+              <span>Explore </span>
               <ArrowRight class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
             </div>
           </AppCard>

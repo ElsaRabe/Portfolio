@@ -3,6 +3,10 @@ import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  // Permet de remonter automatiquement en haut de la page lors d'un changement de route
+  scrollBehavior() {
+    return { top: 0 }
+  },
   routes: [
     {
       path: '/',
@@ -13,6 +17,11 @@ const router = createRouter({
       path: '/data-ia',
       name: 'data-ia',
       component: () => import('../views/DataView.vue'),
+    },
+    {
+      path: '/data-ia/retail-analytics',
+      name: 'retail-analytics',
+      component: () => import('../views/projects/RetailAnalyticsView.vue'),
     },
     {
       path: '/developpement',
