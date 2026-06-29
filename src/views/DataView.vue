@@ -69,7 +69,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           Transforming raw data into actionable business insights.
         </AppText>
         <div class="flex flex-wrap justify-center gap-2 mt-8 max-w-xl">
-          <span v-for="b in ['Python', 'SQL', 'Power BI', 'Pandas', 'Machine Learning', 'EDA']" :key="b" class="px-3 py-1 bg-surface border border-border-custom rounded-full text-xs font-mono text-text-muted">
+          <span v-for="b in ['Python', 'SQL', 'Power BI', 'Pandas', 'Machine Learning', 'EDA', 'NLP']" :key="b" class="px-3 py-1 bg-surface border border-border-custom rounded-full text-xs font-mono text-text-muted">
             {{ b }}
           </span>
         </div>
@@ -81,10 +81,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
       <section class="grid md:grid-cols-12 gap-12 items-center">
         <div class="md:col-span-5 flex justify-center">
-          <div class="w-64 h-64 rounded-full bg-gradient-to-tr from-surface via-border-custom to-bg-main border-2 border-border-custom flex items-center justify-center shadow-2xl relative overflow-hidden group">
-            <div class="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <span class="font-mono text-xs text-text-muted/40 uppercase tracking-widest">[ Profile Image ]</span>
-          </div>
+            <div class="w-64 h-64 rounded-full border-2 border-border-custom shadow-2xl relative overflow-hidden group">
+                <img src="/images/photo elsa 00.jpeg" alt="Elsa - Data Analyst" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            </div>
         </div>
         <div class="md:col-span-7 space-y-6">
           <span class="font-mono text-xs tracking-widest text-accent uppercase">[ Identity ]</span>
@@ -94,7 +93,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           </AppText>
           <div class="grid grid-cols-3 gap-4 pt-6 border-t border-border-custom/20">
             <AppCard class="p-4 text-center">
-              <div class="text-xl font-bold font-display text-text-main">05</div>
+              <div class="text-xl font-bold font-display text-text-main">02</div>
               <div class="font-mono text-[9px] text-text-muted uppercase tracking-wider mt-1">Projects</div>
             </AppCard>
             <AppCard class="p-4 text-center">
@@ -117,7 +116,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <AppCard v-for="cat in [
             { t: 'Programming', b: ['Python', 'SQL'] },
-            { t: 'Libraries', b: ['Pandas', 'NumPy', 'Scikit-Learn'] },
+            { t: 'Libraries', b: ['Pandas', 'NumPy', 'Scikit-Learn', 'NLTK'] },
             { t: 'Visualization', b: ['Matplotlib', 'Seaborn'] },
             { t: 'Tools & BI', b: ['Power BI', 'Jupyter', 'Git', 'VS Code'] }
           ]" :key="cat.t">
@@ -166,8 +165,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
             >
               • {{ p.id.replace('-', ' ') }}
             </button>
-            <button class="font-mono text-xs uppercase tracking-widest text-text-muted/40 cursor-not-allowed" disabled>• NLP Pipeline (Soon)</button>
-            <button class="font-mono text-xs uppercase tracking-widest text-text-muted/40 cursor-not-allowed" disabled>• SQL Architecture (Soon)</button>
+            <button class="font-mono text-xs uppercase tracking-widest text-text-muted/40 cursor-not-allowed" disabled>• Tech Ecosystem (Soon)</button>
           </div>
         </div>
       </div>
@@ -175,9 +173,15 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       <div v-for="project in dataProjects" :key="project.id" :id="`section-${project.id}`" class="border-t border-border-custom/30 pt-24 space-y-28">
         
         <div class="space-y-8">
-          <div class="w-full h-[400px] rounded-2xl bg-surface border border-border-custom overflow-hidden shadow-2xl flex items-center justify-center relative group">
+          <div class="w-full h-[400px] rounded-2xl bg-surface border border-border-custom overflow-hidden shadow-2xl relative group flex items-center justify-center">
+            <img 
+              :src="project.images.hero" 
+              :alt="project.title" 
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              @error="(e) => ((e.target as HTMLImageElement).style.opacity = '0')"
+            />
             <div class="absolute inset-0 bg-gradient-to-t from-bg-main via-transparent to-transparent opacity-60"></div>
-            <span class="font-mono text-xs text-text-muted/40 tracking-widest uppercase transition-transform duration-500 group-hover:scale-105">[ Dashboard Hero Placeholder: {{ project.title }} ]</span>
+            <span class="font-mono text-xs text-text-muted/20 tracking-widest uppercase z-10 pointer-events-none">[ Dashboard Hero Preview ]</span>
           </div>
           <div class="space-y-3">
             <div class="flex justify-between items-center">
@@ -217,21 +221,33 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
             <AppText variant="muted" class="text-base">{{ project.businessContext }}</AppText>
           </div>
           <div class="md:col-span-4 h-32 border border-dashed border-border-custom rounded-lg flex items-center justify-center opacity-40">
-            <span class="font-mono text-[10px] uppercase tracking-widest">[ Strategy Vector ]</span>
+            <span class="font-mono text-[10px] uppercase tracking-widest">[ Strategy Metrics ]</span>
           </div>
         </div>
 
         <div class="space-y-4">
           <h4 class="font-mono text-xs text-accent uppercase tracking-widest">[ Source Structure ]</h4>
-          <div class="w-full h-48 rounded-xl bg-bg-main border border-border-custom flex items-center justify-center overflow-hidden group">
-            <span class="font-mono text-xs text-text-muted/30 uppercase tracking-wider transition-transform duration-500 group-hover:scale-95">[ Dataset Preview: Analytical Grid (first rows) ]</span>
+          <div class="w-full h-48 rounded-xl bg-bg-main border border-border-custom flex items-center justify-center overflow-hidden relative group">
+            <img 
+              :src="project.images.datasetPreview" 
+              alt="Dataset overview matrix" 
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-95"
+              @error="(e) => ((e.target as HTMLImageElement).style.opacity = '0')"
+            />
+            <span class="font-mono text-xs text-text-muted/20 uppercase tracking-wider pointer-events-none">[ Raw Dataset Preview ]</span>
           </div>
           <p class="font-mono text-[10px] text-text-muted/60 text-center uppercase tracking-widest">{{ project.datasetCaption }}</p>
         </div>
 
         <div class="grid md:grid-cols-12 gap-8 items-center">
-          <div class="md:col-span-6 h-64 rounded-xl bg-surface border border-border-custom flex items-center justify-center overflow-hidden">
-            <span class="font-mono text-[11px] text-text-muted/30 uppercase tracking-widest">[ Notebook ETL Pipeline Screenshot ]</span>
+          <div class="md:col-span-6 h-64 rounded-xl bg-surface border border-border-custom flex items-center justify-center overflow-hidden relative">
+            <img 
+              :src="project.images.notebookPreparation" 
+              alt="Notebook engineering pipeline" 
+              class="absolute inset-0 w-full h-full object-cover" 
+              @error="(e) => ((e.target as HTMLImageElement).style.opacity = '0')"
+            />
+            <span class="font-mono text-[11px] text-text-muted/20 uppercase tracking-widest pointer-events-none">[ Data Engineering Source ]</span>
           </div>
           <div class="md:col-span-6 space-y-4">
             <h4 class="font-mono text-xs text-accent uppercase tracking-widest">[ Engineering Processing ]</h4>
@@ -263,8 +279,14 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           <div v-for="(chart, index) in project.eda" :key="chart.title" class="grid md:grid-cols-12 gap-8 items-center">
             
             <template v-if="chart.type === 'left'">
-              <div class="md:col-span-7 h-64 rounded-xl bg-surface border border-border-custom flex items-center justify-center overflow-hidden group">
-                <span class="font-mono text-xs text-text-muted/30 uppercase tracking-widest transition-all duration-500 group-hover:scale-105">[ Visualization: {{ chart.title }} ]</span>
+              <div class="md:col-span-7 h-64 rounded-xl bg-surface border border-border-custom flex items-center justify-center overflow-hidden group relative">
+                <img 
+                  :src="chart.image" 
+                  :alt="chart.title" 
+                  class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105" 
+                  @error="(e) => ((e.target as HTMLImageElement).style.opacity = '0')"
+                />
+                <span class="font-mono text-xs text-text-muted/20 uppercase tracking-widest pointer-events-none">[ Core Plot Matrix ]</span>
               </div>
               <div class="md:col-span-5 space-y-2">
                 <span class="font-mono text-[10px] text-accent font-bold">METRIC 0{{ index + 1 }}</span>
@@ -279,8 +301,14 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
                 <h4 class="font-display font-bold text-xl text-text-main">{{ chart.title }}</h4>
                 <AppText variant="muted" class="text-sm">{{ chart.desc }}</AppText>
               </div>
-              <div class="md:col-span-7 h-64 rounded-xl bg-surface border border-border-custom flex items-center justify-center overflow-hidden group md:order-2 order-1">
-                <span class="font-mono text-xs text-text-muted/30 uppercase tracking-widest transition-all duration-500 group-hover:scale-105">[ Visualization: {{ chart.title }} ]</span>
+              <div class="md:col-span-7 h-64 rounded-xl bg-surface border border-border-custom flex items-center justify-center overflow-hidden group relative md:order-2 order-1">
+                <img 
+                  :src="chart.image" 
+                  :alt="chart.title" 
+                  class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105" 
+                  @error="(e) => ((e.target as HTMLImageElement).style.opacity = '0')"
+                />
+                <span class="font-mono text-xs text-text-muted/20 uppercase tracking-widest pointer-events-none">[ Core Plot Matrix ]</span>
               </div>
             </template>
 
@@ -302,9 +330,15 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
         <div class="space-y-8">
           <h4 class="font-mono text-xs text-accent uppercase tracking-widest">[ Production UI ]</h4>
-          <AppHeading level="2" class="text-2xl font-bold">Interactive BI Suite</AppHeading>
-          <div class="w-full h-[450px] rounded-2xl bg-surface border border-border-custom overflow-hidden shadow-2xl flex items-center justify-center group">
-            <span class="font-mono text-xs text-text-muted/30 uppercase tracking-widest transition-all duration-500 group-hover:scale-102">[ Power BI Dashboard Active Sandbox Frame ]</span>
+          <AppHeading level="2" class="text-2xl font-bold">Interactive Metrics Sandbox</AppHeading>
+          <div class="w-full h-[450px] rounded-2xl bg-surface border border-border-custom overflow-hidden shadow-2xl flex items-center justify-center group relative">
+            <img 
+              :src="project.images.powerBiDashboard" 
+              alt="Interactive visualization instance" 
+              class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-[1.01]" 
+              @error="(e) => ((e.target as HTMLImageElement).style.opacity = '0')"
+            />
+            <span class="font-mono text-xs text-text-muted/20 tracking-widest uppercase pointer-events-none">[ Production Frame Capture ]</span>
           </div>
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <AppCard v-for="kpi in project.kpis" :key="kpi.label" class="p-4 text-center bg-bg-main border border-border-custom/70">
@@ -343,7 +377,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
           </a>
           <a :href="project.links.dashboard" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-bg-main rounded-xl font-mono text-xs uppercase tracking-widest font-bold hover:bg-amber-400 transition-all duration-300 shadow-xl shadow-accent/10">
             <ExternalLink class="w-4 h-4" />
-            <span>Live BI Dashboard</span>
+            <span>Live Project Demo</span>
           </a>
           <a :href="project.links.report" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-surface border border-border-custom rounded-xl font-mono text-xs uppercase tracking-widest text-text-muted hover:border-text-main transition-all duration-300">
             <FileText class="w-4 h-4" />
@@ -358,7 +392,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </template>
 
 <style scoped>
-/* Utility class to hide scrollbar on horizontal sticky navigation items */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

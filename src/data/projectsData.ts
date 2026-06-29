@@ -4,6 +4,12 @@ export interface ProjectData {
   subtitle: string
   tags: string[]
   year: string
+  images: {
+    hero: string
+    datasetPreview: string
+    notebookPreparation: string
+    powerBiDashboard: string
+  }
   overview: {
     description: string
     summary: { source: string; records: string; features: string; domain: string }
@@ -14,7 +20,7 @@ export interface ProjectData {
     steps: string[]
   }
   methodology: { step: string; desc: string }[]
-  eda: { title: string; desc: string; type: 'left' | 'right' }[]
+  eda: { title: string; desc: string; type: 'left' | 'right'; image: string }[]
   insights: { title: string; desc: string }[]
   kpis: { label: string; value: string }[]
   challenges: string
@@ -29,6 +35,12 @@ export const dataProjects: ProjectData[] = [
     subtitle: 'Exploratory Data Analysis & Business Intelligence Dashboard',
     tags: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Power BI', 'Jupyter Notebook'],
     year: '2026',
+    images: {
+      hero: '/images/projects/project 1/retail-hero.png',
+      datasetPreview: '/images/projects/project 1/dataset.png',
+      notebookPreparation: '/images/projects/project 1/clean.png',
+      powerBiDashboard: '/images/projects/project 1/retail-dashboard.png'
+    },
     overview: {
       description: "Understanding customer purchasing behavior is essential for improving operational efficiency and delivering better shopping experiences. In this project, I analyzed more than 3 million grocery orders from an online retail platform to uncover purchasing patterns, customer habits, and product performance. The project follows a complete data analytics workflow—from raw data preparation to business insight generation and dashboard creation—demonstrating how data can support strategic decision-making.",
       summary: {
@@ -57,10 +69,10 @@ export const dataProjects: ProjectData[] = [
       { step: 'Dashboard', desc: 'Exporting refined metrics to Power BI Desktop.' }
     ],
     eda: [
-      { title: 'Sales by Department', desc: 'Analyzing transactional volume distribution across various store sections to identify underperforming sectors.', type: 'left' },
-      { title: 'Top-Selling Products', desc: 'Visualizing product frequencies to separate recurring essentials from low-velocity items.', type: 'right' },
-      { title: 'Orders by Hour of Day', desc: 'Mapping historical transactions against time slots to model logistically critical peak demands.', type: 'left' },
-      { title: 'Reorder Rate Analysis', desc: 'Evaluating the behavioral distribution of returning customers against first-time buyers.', type: 'right' }
+      { title: 'Sales by Department', desc: 'Analyzing transactional volume distribution across various store sections to identify underperforming sectors.', type: 'left', image: '/images/projects/project 1/rayons.png' },
+      { title: 'Top-Selling Products', desc: 'Visualizing product frequencies to separate recurring essentials from low-velocity items.', type: 'right', image: '/images/projects/project 1/top_produits.png' },
+      { title: 'Orders by Hour of Day', desc: 'Mapping historical transactions against time slots to model logistically critical peak demands.', type: 'left', image: '/images/projects/project 1/heures.png' },
+      { title: 'Reorder Rate Analysis', desc: 'Evaluating the behavioral distribution of returning customers against first-time buyers.', type: 'right', image: '/images/projects/project 1/Jours.png' }
     ],
     insights: [
       { title: 'Fresh products dominate demand', desc: 'Fruits, vegetables, and dairy capture the highest volume, reinforcing customer daily routines.' },
@@ -90,6 +102,12 @@ export const dataProjects: ProjectData[] = [
     subtitle: 'Text Analytics, Topic Modeling & Recommendation Engine',
     tags: ['Python', 'NLTK', 'Pandas', 'Scikit-Learn', 'TF-IDF', 'LSA', 'Cosine Similarity'],
     year: '2026',
+    images: {
+      hero: '/images/projects/nlp-hero.png',
+      datasetPreview: '/images/projects/nlp-dataset.png',
+      notebookPreparation: '/images/projects/nlp-notebook.png',
+      powerBiDashboard: '/images/projects/nlp-dashboard.png'
+    },
     overview: {
       description: "Books contain thousands of words, making it difficult to compare them manually based on their actual content. This project demonstrates how Natural Language Processing (NLP) can transform raw literary text into structured information capable of identifying themes and recommending similar books automatically. Using a collection of 52 English literature books from Project Gutenberg, I built an end-to-end text analytics pipeline that preprocesses raw text, extracts semantic information, identifies hidden topics, and recommends the most similar books based on their textual content.",
       summary: {
@@ -118,10 +136,10 @@ export const dataProjects: ProjectData[] = [
       { step: 'Machine Learning', desc: 'Topic Modeling via LSA (TruncatedSVD) and Cosine Similarity mapping.' }
     ],
     eda: [
-      { title: 'Word Frequency Distributions', desc: 'Tracking vocabulary densities across the corpus to highlight major keywords before term weighting.', type: 'left' },
-      { title: 'Thematic Document Distributions', desc: 'Evaluating document weights across latent axes to check thematic coherence.', type: 'right' },
-      { title: 'TF-IDF Matrix Sparsity', desc: 'Analyzing the spatial distribution of unique tokens across the 52 distinct vectors.', type: 'left' },
-      { title: 'Cosine Similarity Thresholds', desc: 'Profiling the statistical distribution of proximity scores across different literary genres.', type: 'right' }
+      { title: 'Word Frequency Distributions', desc: 'Tracking vocabulary densities across the corpus to highlight major keywords before term weighting.', type: 'left', image: '/images/projects/nlp-eda1.png' },
+      { title: 'Thematic Document Distributions', desc: 'Evaluating document weights across latent axes to check thematic coherence.', type: 'right', image: '/images/projects/nlp-eda2.png' },
+      { title: 'TF-IDF Matrix Sparsity', desc: 'Analyzing the spatial distribution of unique tokens across the 52 distinct vectors.', type: 'left', image: '/images/projects/nlp-eda3.png' },
+      { title: 'Cosine Similarity Thresholds', desc: 'Profiling the statistical distribution of proximity scores across different literary genres.', type: 'right', image: '/images/projects/nlp-eda4.png' }
     ],
     insights: [
       { title: 'Hidden themes discovered automatically', desc: 'Without manual labeling, the unsupervised LSA pipeline successfully mapped three major literary themes.' },
