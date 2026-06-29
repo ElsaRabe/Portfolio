@@ -21,11 +21,12 @@ const globalWorkflow = [
 ]
 
 // --- STICKY NAVIGATION LOGIC ---
-const activeProjectTab = ref(dataProjects[0].id)
+const activeProjectTab = ref(dataProjects[0]!.id)
 const isSticky = ref(false)
 
 const handleScroll = () => {
   const navTrigger = document.getElementById('project-nav-trigger')
+  // On vérifie explicitement que navTrigger existe avant de lire offsetTop
   if (navTrigger) {
     isSticky.value = window.scrollY > navTrigger.offsetTop
   }
